@@ -1,0 +1,28 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.page_forms{
+  padding: 10px;
+  }
+  .page_forms span{
+    text-align: left;
+    font-style: italic;
+  }
+  .page_forms form{
+    padding: 2px;
+    display:table;
+  }
+  .page_forms label{
+    padding: 10px;
+    display: table-cell;
+    text-align:right;
+    vertical-align: top;
+  }
+  .page_forms input{
+    margin-bottom: 2px;
+  }
+  .page_forms p{
+    display: table-row;
+  }

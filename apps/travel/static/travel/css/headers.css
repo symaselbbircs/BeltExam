@@ -1,0 +1,44 @@
+#main{
+  margin-top: 20px;
+}
+
+#header{
+  margin-top: 10px;
+  width: 100%;
+  vertical-align: top;
+  position: fixed;
+  top: 0;
+  }
+  #header a:first-of-type{
+    margin-left: 100px;
+    margin-right: 10px;
+  }
+
+#header_container{
+  display: inline-block;
+  width: 1000px;
+  background-color: white;
+}
+
+.header_content{
+  display: inline-block;
+}
+
+#headername{
+  display: inline-block;
+  width: 700px;
+}
+
+
+
+.error {
+  color: red;
+}
+
+.messages{
+  margin-left: 400px;
+}
+
+.success{
+  color: green;
+}

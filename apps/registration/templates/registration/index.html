@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Belt Exam</title>
+  {% load staticfiles %}
+  <link rel="stylesheet" href="{% static 'registration/css/index_style.css' %}" media="screen" title="no title">
+</head>
+<body>
+  <h1>Trip Manager Application</h1>
+  {% if messages %}
+    <div class="{{messages.0.tags}}">
+      <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+  <div id="registration" class= "page_forms">
+    <h1>Registration</h1>
+    <form action='{% url 'login-register' %}' method='POST'>
+      {% csrf_token %}
+      <p><label for="email">Email:<input type="text" name="email"></label></p>
+      <p><label for="first_name">First Name:<input type="text" name="first_name"></label></p>
+      <p><label for="last_name">Last Name:<input type="text" name="last_name"></label></p>
+      <p><label for="password1">Password:<input type="password" name="password1"></label></p>
+      <p><label for="password2">Confirm Password:<input type="password" name="password2"></label></p>
+      <p><label><input type="submit" value="Register"></label></p>
+    </form>
+  </div>
+  <div id="login" class= "page_forms">
+    <h1>Login</h1>
+    <form action='{% url 'login-login' %}' method='POST'>
+      {% csrf_token %}
+      <p><label for="email">Email:<input type="text" name="email"></label></p>
+      <p><label for="password">Password:<input type="password" name="password"></label></p>
+      <p><label><input type="submit" value="Login"></label></p>
+    </form>
+  </div>
+</body>
+</html>

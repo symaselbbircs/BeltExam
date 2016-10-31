@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add Plan</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'travel/css/headers.css' %}" media="screen" title="no title">
+    <link rel="stylesheet" href="{% static 'travel/css/add_style.css' %}" media="screen" title="no title">
+  </head>
+  <body>
+    <div id=header_container>
+      <div id = "header">
+        <!-- <div id="headername"><h4>Welcome, {{request.session.first_name}}!</h4></div> -->
+        <div id="headername"></div>
+        <a class="header_content" href="{% url 'travel-index' %}">Home</a>
+        <a class="header_content" href="{% url 'logout' %}">Logout</a>
+      </div>
+    </div>
+    {% if messages %}
+    <div class="{{messages.0.tags}}">
+      <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    <div id = "main">
+      <div id="bookform" class= "page_forms">
+        <h3>Add a New Book Title and a Review:</h3>
+        <form action="{% url 'travel-add' %}" method="post">
+            {% csrf_token %}
+            <p><label for="title">Destination: <input type="text" name="destination"></label></p>
+            <p><label for="destination">Description: <input type="text" name="description"></label></p>
+            <p><label for="destination">Travel Date From(mm/dd/yyyy): <input type="text" name="dateto"></label></p>
+            <p><label for="destination">Travel Date To(mm/dd/yyyy): <input type="text" name="datefrom"></label></p>
+            <p><label><input type="submit" value="Add Trip"></label></p>
+    </div>
+  </body>
+</html>

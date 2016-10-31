@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Destination</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'travel/css/headers.css' %}" media="screen" title="no title">
+  </head>
+  </head>
+  <body>
+    <div id=header_container>
+      <div id = "header">
+        <!-- <div id="headername"><h4>Welcome, {{request.session.first_name}}!</h4></div> -->
+        <div id="headername"></div>
+        <a class="header_content" href="{% url 'travel-index' %}">Home</a>
+        <a class="header_content" href="{% url 'logout' %}">Logout</a>
+      </div>
+    </div>
+    {% if messages %}
+    <div class="{{messages.0.tags}}">
+      <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    <div id="main">
+      {% for row in tripinfo %}
+        <h3>{{row.destination}}</h3>
+        <p><h5>Planned By: </h5>{{row.user.first_name}} {{row.user.last_name}}</p>
+        <p><h5>Description: </h5>{{row.description}}</p>
+        <p><h5>Travel Date From: </h5>{{row.fromdate}}</p>
+        <p><h5>Travel Date To: </h5>{{row.todate}}</p><br><br><br><br><br>
+      {% endfor %}
+      <h3>Other users joining the trip</h3>
+      {% if usersjoined %}
+        <ul>
+        {% for row in usersjoined %}
+          <li>{{row.user.first_name}} {{row.user.last_name}}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </body>
+</html>
